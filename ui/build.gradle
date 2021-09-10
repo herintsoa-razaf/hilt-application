@@ -37,9 +37,9 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation project(":core")
+    implementation project(":presenter")
 
     implementation rootProject.dep.androidx_constraintlayout
-    implementation rootProject.dep.androidx_lifecycle_viewmodel_ktx
     implementation rootProject.dep.androidx_fragment_ktx
 
     implementation rootProject.dep.hilt

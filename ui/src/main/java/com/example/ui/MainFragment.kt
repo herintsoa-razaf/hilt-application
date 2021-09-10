@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.example.presenter.MainViewModel
 import com.example.ui.databinding.FragmentMainBinding
 import dagger.hilt.android.AndroidEntryPoint
 
