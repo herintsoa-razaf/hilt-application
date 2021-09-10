@@ -1,19 +1,19 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'dagger.hilt.android.plugin'
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
 
 android {
-    compileSdkVersion rootProject.compileSdkVersion
+    compileSdk rootProject.compileSdkVersion
 
     defaultConfig {
-        applicationId "com.example.hiltapplication"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
 
         testInstrumentationRunner androidJUnitRunner
+        consumerProguardFiles "consumer-rules.pro"
     }
 
     buildTypes {
@@ -23,22 +23,24 @@ android {
         }
     }
     compileOptions {
-        // Flag to enable support for the new language APIs
-        coreLibraryDesugaringEnabled true
-
         sourceCompatibility rootProject.javaCompatibility
         targetCompatibility rootProject.javaCompatibility
     }
     kotlinOptions {
         jvmTarget = rootProject.kotlinJvmTarget
     }
+    buildFeatures {
+        viewBinding true
+    }
 }
 
 dependencies {
-    coreLibraryDesugaring rootProject.dep.desugar_jdk_libs
     implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation project(":ui")
     implementation project(":core")
+
+    implementation rootProject.dep.androidx_constraintlayout
+    implementation rootProject.dep.androidx_lifecycle_viewmodel_ktx
+    implementation rootProject.dep.androidx_fragment_ktx
 
     implementation rootProject.dep.hilt
     kapt rootProject.dep.hilt_compiler
