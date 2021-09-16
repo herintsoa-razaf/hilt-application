@@ -1,2 +1,4 @@
 <resources>
+    <string name="company_s_id">Company\'s id</string>
+    <string name="loading">Loading&#8230;</string>
 </resources>

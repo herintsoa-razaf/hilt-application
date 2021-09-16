@@ -33,9 +33,12 @@ android {
 
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation project(":domain")
     implementation project(":core")
 
-    implementation rootProject.dep.androidx_lifecycle_viewmodel_ktx
+    api rootProject.dep.androidx_lifecycle_viewmodel_ktx
+    api rootProject.dep.androidx_lifecycle_livedata_ktx
+    api rootProject.dep.androidx_lifecycle_common
 
     implementation rootProject.dep.hilt
     kapt rootProject.dep.hilt_compiler

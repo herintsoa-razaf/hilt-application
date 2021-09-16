@@ -35,6 +35,7 @@ dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
 
     api rootProject.dep.kotlin_stdlib
+    api rootProject.dep.kotlinx_coroutines_android
 
     api rootProject.dep.androidx_core_ktx
     api rootProject.dep.androidx_appcompat

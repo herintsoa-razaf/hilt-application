@@ -28,12 +28,43 @@ class MainFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        attachListeners()
+        attachObservers()
         viewBinding?.message?.text = viewModel.getMessage()
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         viewBinding = null
+    }
+
+    private fun attachListeners() {
+        viewBinding?.btnOk?.setOnClickListener {
+            viewBinding?.edtCompanyId?.text?.toString()
+                ?.takeIf { it.isNotBlank() }
+                ?.also(viewModel::getCompany)
+                ?: run {
+                    viewBinding?.tvCompany?.text = ""
+                }
+        }
+    }
+
+    private fun attachObservers() {
+        viewModel.apply {
+            company.observe(viewLifecycleOwner) { value ->
+                value?.let { "I am ${it.name} " }?.also {
+                    viewBinding?.tvCompany?.text = it
+                }
+            }
+            loading.observe(viewLifecycleOwner) { loading ->
+                if (loading) {
+                    viewBinding?.tvCompany?.text = ""
+                    viewBinding?.message?.text = getString(R.string.loading)
+                } else {
+                    viewBinding?.message?.text = viewModel.getMessage()
+                }
+            }
+        }
     }
 
     companion object {

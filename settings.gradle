@@ -3,3 +3,6 @@ rootProject.name = "Hilt Application"
 include ':core'
 include ':ui'
 include ':presenter'
+include ':domain'
+include ':local'
+include ':remote'

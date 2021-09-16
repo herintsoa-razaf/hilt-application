@@ -7,13 +7,48 @@
     android:layout_height="match_parent"
     tools:context=".MainFragment">
 
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_percent="0.2" />
+
     <TextView
         android:id="@+id/message"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="@id/guideline_top" />
+
+    <EditText
+        android:id="@+id/edt_company_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:autofillHints="@null"
+        android:hint="@string/company_s_id"
+        android:inputType="number"
+        android:maxLines="1"
+        app:layout_constraintTop_toBottomOf="@id/message" />
+
+    <Button
+        android:id="@+id/btn_ok"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@android:string/ok"
+        app:layout_constraintEnd_toEndOf="@id/edt_company_id"
+        app:layout_constraintTop_toBottomOf="@id/edt_company_id" />
+
+    <TextView
+        android:id="@+id/tv_company"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        app:layout_constraintEnd_toStartOf="@id/btn_ok"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edt_company_id" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
