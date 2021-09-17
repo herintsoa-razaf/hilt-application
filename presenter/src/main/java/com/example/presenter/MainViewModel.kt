@@ -39,7 +39,7 @@ class MainViewModel @Inject constructor(
         viewModelScope.launch {
             _loading.value = true
             try {
-                withContext(dispatcher.io()) {
+                withContext(dispatcher.io) {
                     // simulate long running operation
                     delay(2_000)
                     companyUseCase.getCompanyInfo(id)

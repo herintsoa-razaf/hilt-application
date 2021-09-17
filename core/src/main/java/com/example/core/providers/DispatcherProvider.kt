@@ -1,12 +1,15 @@
 package com.example.core.providers
 
+import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.Dispatchers.Main
 import javax.inject.Inject
 
 class DispatcherProvider @Inject constructor() {
 
-    fun ui() = Main
+    val ui: CoroutineDispatcher
+        get() = Main
 
-    fun io() = IO
+    val io: CoroutineDispatcher
+        get() = IO
 }
